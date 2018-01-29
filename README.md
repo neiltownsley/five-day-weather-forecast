@@ -3,7 +3,9 @@
 ## Application Information
 
 The application utilises Open Weather Map API to retrieve a five day weather forecast summary.
+
 The daily summary is based on the retrieved OWM properties for the given day at 12:00 pm.
+
 The raw data is mapped to an application specific Model which is used to display the dashboard data.
 
 ## Problems
@@ -13,10 +15,9 @@ The raw data is mapped to an application specific Model which is used to display
  * After retrieving the raw OWM data via a http get request the data is mapped to a model via a service which is called after executing the http request. (see: open.weather.map.response.mapper.ts)
 
 ## Improvements
- * Currently the dashboard on displays a daily summary based on the OWM data for the given day at 12:00pm, it would be nice to expand this to a morning, afternoon evening summary.
+ * Currently the dashboard on displays a daily summary based on the OWM data for the given day at 12:00pm, it would be nice to expand this to a morning, afternoon and evening summary.
 
 ## Instructions
-
 
 Run `git clone https://github.com/neiltownsley/five-day-weather-forecast.git` to clone 
 
