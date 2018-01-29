@@ -1,11 +1,11 @@
 import {async, inject, TestBed} from '@angular/core/testing';
 import {OpenWeatherMapResponseMapper} from './open.weather.map.response.mapper';
-import {OpenWeatherMap} from './open.weather.map.item';
 import {MockOpenWeatherMapHttpResponse} from '../test/mock.open.weather.map.http.response';
 import {Observable} from 'rxjs/Observable';
 import {OpenWeatherMapRequestHandler} from './open.weather.map.request.handler';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {OpenWeatherMapInterface} from './open.weather.map.interface';
 
 describe('OpenWeatherMapRequestHandler', () => {
 
@@ -58,7 +58,7 @@ describe('OpenWeatherMapRequestHandler', () => {
 
           expect(openWeatherMapResponseMapper.getOpenWeatherMapResponseMap).toHaveBeenCalled();
           openWeatherMapFiveDayForecast.subscribe(
-            (openWeatherMap: OpenWeatherMap) => {
+            (openWeatherMap: OpenWeatherMapInterface) => {
               expect(openWeatherMap)
                 .toEqual(MockOpenWeatherMapHttpResponse.getMappedOpenWeatherMapResponse());
             }

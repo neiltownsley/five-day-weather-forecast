@@ -8,9 +8,9 @@ import {OpenWeatherMapRequestHandler} from '../shared/open.weather.map.request.h
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {OpenWeatherMapResponseMapper} from '../shared/open.weather.map.response.mapper';
-import {Observable} from "rxjs/Observable";
-import {MockOpenWeatherMapHttpResponse} from "../test/mock.open.weather.map.http.response";
-import {OpenWeatherMap} from "../shared/open.weather.map.item";
+import {Observable} from 'rxjs/Observable';
+import {MockOpenWeatherMapHttpResponse} from '../test/mock.open.weather.map.http.response';
+import {OpenWeatherMapInterface} from '../shared/open.weather.map.interface';
 
 describe('WeatherDashboardComponent', () => {
   let component: WeatherDashboardComponent;
@@ -48,7 +48,7 @@ describe('WeatherDashboardComponent', () => {
         fixture.detectChanges();
 
         component.openWeatherMap.subscribe(
-          (openWeatherMap: OpenWeatherMap) => {
+          (openWeatherMap: OpenWeatherMapInterface) => {
             expect(openWeatherMap).toEqual(MockOpenWeatherMapHttpResponse.getMappedOpenWeatherMapResponse());
           });
       })

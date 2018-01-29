@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {OpenWeatherMapRequestHandler} from '../shared/open.weather.map.request.handler';
-import {OpenWeatherMap} from '../shared/open.weather.map.item';
 import {Observable} from 'rxjs/Observable';
+import {OpenWeatherMapInterface} from '../shared/open.weather.map.interface';
 
 @Component({
   selector: 'app-weather-dashboard',
-  templateUrl: './weather-dashboard.component.html',
-  styleUrls: ['./weather-dashboard.component.css']
+  templateUrl: './weather-dashboard.component.html'
 })
 export class WeatherDashboardComponent implements OnInit {
-  public openWeatherMap: Observable<OpenWeatherMap>;
+  public openWeatherMap: Observable<OpenWeatherMapInterface>;
 
   constructor(private openWeatherMapRequestHandler: OpenWeatherMapRequestHandler) {
   }

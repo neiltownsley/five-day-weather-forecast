@@ -1,8 +1,9 @@
 import {async, inject, TestBed} from '@angular/core/testing';
 import {OpenWeatherMapResponseMapper} from './open.weather.map.response.mapper';
-import {OpenWeatherMap, OpenWeatherMapRawHttpResponse} from './open.weather.map.item';
 import {MockOpenWeatherMapHttpResponse} from '../test/mock.open.weather.map.http.response';
 import {Observable} from 'rxjs/Observable';
+import {OpenWeatherMapRawHttpResponseInterface} from './open.weather.map.raw.http.response.interface';
+import {OpenWeatherMapInterface} from './open.weather.map.interface';
 
 describe('OpenWeatherMapResponseMapper', () => {
 
@@ -17,7 +18,7 @@ describe('OpenWeatherMapResponseMapper', () => {
     }));
 
 
-  const mockOpeWeatherMapResponse: OpenWeatherMapRawHttpResponse = {
+  const mockOpeWeatherMapResponse: OpenWeatherMapRawHttpResponseInterface = {
     list: MockOpenWeatherMapHttpResponse.getRawOpenWeatherMapList()
   };
 
@@ -30,7 +31,7 @@ describe('OpenWeatherMapResponseMapper', () => {
         );
 
         openWeatherMapResponseMap.subscribe(
-          (openWeatherMap: OpenWeatherMap) => {
+          (openWeatherMap: OpenWeatherMapInterface) => {
             expect(openWeatherMap)
               .toEqual(MockOpenWeatherMapHttpResponse.getMappedOpenWeatherMapResponse());
           }
@@ -48,7 +49,7 @@ describe('OpenWeatherMapResponseMapper', () => {
         );
 
         openWeatherMapResponseMap.subscribe(
-          (openWeatherMap: OpenWeatherMap) => {
+          (openWeatherMap: OpenWeatherMapInterface) => {
             expect(openWeatherMap)
               .toEqual({openWeatherMapItemList: []});
           }

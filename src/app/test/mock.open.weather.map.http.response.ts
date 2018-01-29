@@ -1,4 +1,4 @@
-import {OpenWeatherMap } from '../shared/open.weather.map.item';
+import {OpenWeatherMapInterface} from '../shared/open.weather.map.interface';
 
 export class MockOpenWeatherMapHttpResponse {
   public static getRawOpenWeatherMapList(): Array<any> {
@@ -177,7 +177,7 @@ export class MockOpenWeatherMapHttpResponse {
     ];
   }
 
-  public static getMappedOpenWeatherMapResponse(): OpenWeatherMap {
+  public static getMappedOpenWeatherMapResponse(): OpenWeatherMapInterface {
     return {
       openWeatherMapItemList: [
         {

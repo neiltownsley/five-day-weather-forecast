@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
-import {OpenWeatherMap, OpenWeatherMapItem, OpenWeatherMapRawHttpResponse} from './open.weather.map.item';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import {OpenWeatherMapItemInterface} from './open.weather.map.item.interface';
+import {OpenWeatherMapRawHttpResponseInterface} from './open.weather.map.raw.http.response.interface';
+import {OpenWeatherMapInterface} from './open.weather.map.interface';
 
 @Injectable()
 export class OpenWeatherMapResponseMapper {
-  private openWeatherMapItems: OpenWeatherMapItem[] = [];
+  private openWeatherMapItems: OpenWeatherMapItemInterface[] = [];
 
-  public getOpenWeatherMapResponseMap(openWeatherMapHttpResponse: Observable<OpenWeatherMapRawHttpResponse>): Observable<OpenWeatherMap> {
+  public getOpenWeatherMapResponseMap(openWeatherMapHttpResponse: Observable<OpenWeatherMapRawHttpResponseInterface>): Observable<OpenWeatherMapInterface> {
     return openWeatherMapHttpResponse.map(
-      (openWeatherMapResponse: OpenWeatherMapRawHttpResponse) => {
+      (openWeatherMapResponse: OpenWeatherMapRawHttpResponseInterface) => {
         if (!openWeatherMapResponse || !openWeatherMapResponse.list) {
           return {openWeatherMapItemList: []};
         } else {
@@ -19,7 +21,7 @@ export class OpenWeatherMapResponseMapper {
     );
   }
 
-  private getWeatherMapItemList(openWeatherMapResponse: OpenWeatherMapRawHttpResponse): OpenWeatherMap {
+  private getWeatherMapItemList(openWeatherMapResponse: OpenWeatherMapRawHttpResponseInterface): OpenWeatherMapInterface {
     openWeatherMapResponse.list.forEach(
       (rawWeatherItem: number | string) => {
         if (rawWeatherItem['dt_txt'].includes('12:00')) {
@@ -29,7 +31,7 @@ export class OpenWeatherMapResponseMapper {
     return {openWeatherMapItemList: this.openWeatherMapItems};
   }
 
-  private getWeatherMapItem(rawWeatherItem: number | string): OpenWeatherMapItem {
+  private getWeatherMapItem(rawWeatherItem: number | string): OpenWeatherMapItemInterface {
     return {
       dateTime: rawWeatherItem['dt_txt'],
       weatherMain: rawWeatherItem['weather'][0]['main'],
