@@ -1,0 +1,25 @@
+<div class="alert alert-danger" id="connectionError" *ngIf="openWeatherMap && !openWeatherMap?.openWeatherMapItemList.length">
+  Unable to retrieve Open Weather Map data, please check your Internet connection.
+</div>
+<div *ngFor="let item of openWeatherMap?.openWeatherMapItemList; let idSuffix = index" class="col-xs-1ths col-sm-1ths col-md-5ths col-lg-5ths">
+  <div class="weatherPanel panel panel-default">
+    <div class="panel-heading">
+      <h1 id="weatherDate{{idSuffix}}"><i id="dateMargin" class="fa fa-calendar" aria-hidden="true"></i>{{item.dateTime | date: 'EE d MMM y'}}</h1>
+    </div>
+    <div class="panel-body">
+      <h2 id="dailySummaryHeading{{idSuffix}}" class="dailySummaryHeading">Daily summary</h2>
+      <p id="weatherDescription{{idSuffix}}">
+        <wi *ngIf="item.weatherMain === 'Clouds'" name="wi wi-cloudy"></wi>
+        <wi *ngIf="item.weatherMain === 'Clear'" name="wi wi-day-sunny"></wi>
+        <wi *ngIf="item.weatherMain === 'Rain'" name="wi wi-rain"></wi>
+        {{item.weatherDescription}}
+      </p>
+      <p id="weatherTemperature{{idSuffix}}">
+        <i class="fa fa-thermometer-empty iconMarginRight" aria-hidden="true"></i>{{item.tempMin}} - {{item.tempMax}} celsius</p>
+      <p id="weatherWindSpeed{{idSuffix}}">
+        <wi name="wi wi wi-wind towards-90-deg"></wi>
+        {{item.windSpeed}} meter/sec
+      </p>
+    </div>
+  </div>
+</div>

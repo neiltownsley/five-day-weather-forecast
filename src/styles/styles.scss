@@ -1,0 +1,42 @@
+@import '../../node_modules/font-awesome/css/font-awesome.css';
+@import '../../node_modules/weather-icons/css/weather-icons.css';
+@import '../../node_modules/weather-icons/css/weather-icons-wind.css';
+
+#weatherDashboardContainer {
+  margin: 50px 0 0 0;
+
+  h1, h2, h3 {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    word-wrap: normal;
+  }
+
+  .logo {
+    margin-right: 10px;
+    color: yellow;
+  }
+
+  .calendarIcon {
+    margin-left: 10px
+  }
+
+  .dailySummaryHeading {
+    margin: 0 0 10px 0;
+
+  }
+
+  .weatherPanel {
+    margin: 20px 0 0 0;
+    min-height: 100px;
+  }
+
+  .alert {
+    margin: 20px 0 0 0;
+  }
+
+  .iconMarginRight  {
+    margin-right: 5px;
+  }
+}
