@@ -1,5 +1,7 @@
 # Five Day Weather Forecast
 
+[Click here to run the application](https://neiltownsley.github.io/five-day-weather-forecast/)
+
 ## Application Information
 
 The application utilises Open Weather Map API to retrieve a five day weather forecast summary.

@@ -4,7 +4,7 @@
 <div *ngFor="let item of openWeatherMap?.openWeatherMapItemList; let idSuffix = index" class="col-xs-1ths col-sm-1ths col-md-5ths col-lg-5ths">
   <div class="weatherPanel panel panel-default">
     <div class="panel-heading">
-      <h1 id="weatherDate{{idSuffix}}"><i id="dateMargin" class="fa fa-calendar" aria-hidden="true"></i>{{item.dateTime | date: 'EE d MMM y'}}</h1>
+      <h1 id="weatherDate{{idSuffix}}"><i class="calendarIcon fa fa-calendar" aria-hidden="true"></i>{{item.dateTime | date: 'EE d MMM y'}}</h1>
     </div>
     <div class="panel-body">
       <h2 id="dailySummaryHeading{{idSuffix}}" class="dailySummaryHeading">Daily summary</h2>
