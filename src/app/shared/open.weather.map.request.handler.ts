@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import {OpenWeatherMapRawHttpResponseInterface} from './open.weather.map.raw.http.response.interface';
+import {OpenWeatherMapInterface} from './open.weather.map.interface';
 
 @Injectable()
 export class OpenWeatherMapRequestHandler {
@@ -16,7 +17,7 @@ export class OpenWeatherMapRequestHandler {
               private openWeatherMapResponseMapper: OpenWeatherMapResponseMapper) {
   }
 
-  public getOpenWeatherMapFiveDayForecast(): any {
+  public getOpenWeatherMapFiveDayForecast(): Observable<OpenWeatherMapInterface> {
     const openWeatherMapResponse: Observable<OpenWeatherMapRawHttpResponseInterface> = this.httpClient.get(this.openWeatherMapUrl)
       .catch(
         (err: HttpErrorResponse) => {
