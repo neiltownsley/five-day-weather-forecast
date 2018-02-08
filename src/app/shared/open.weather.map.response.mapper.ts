@@ -9,7 +9,10 @@ import {OpenWeatherMapInterface} from './open.weather.map.interface';
 export class OpenWeatherMapResponseMapper {
   private openWeatherMapItems: OpenWeatherMapItemInterface[] = [];
 
-  public getOpenWeatherMapResponseMap(openWeatherMapHttpResponse: Observable<OpenWeatherMapRawHttpResponseInterface>): Observable<OpenWeatherMapInterface> {
+  public getOpenWeatherMapResponseMap(
+    openWeatherMapHttpResponse: Observable<OpenWeatherMapRawHttpResponseInterface>
+  ): Observable<OpenWeatherMapInterface> {
+
     return openWeatherMapHttpResponse.map(
       (openWeatherMapResponse: OpenWeatherMapRawHttpResponseInterface) => {
         if (!openWeatherMapResponse || !openWeatherMapResponse.list) {
@@ -23,15 +26,15 @@ export class OpenWeatherMapResponseMapper {
 
   private getWeatherMapItemList(openWeatherMapResponse: OpenWeatherMapRawHttpResponseInterface): OpenWeatherMapInterface {
     openWeatherMapResponse.list.forEach(
-      (rawWeatherItem: number | string) => {
-        if (rawWeatherItem['dt_txt'].includes('12:00')) {
+      (rawWeatherItem: any) => {
+        if (rawWeatherItem && rawWeatherItem['dt_txt'].includes('12:00')) {
           this.openWeatherMapItems.push(this.getWeatherMapItem(rawWeatherItem));
         }
       });
     return {openWeatherMapItemList: this.openWeatherMapItems};
   }
 
-  private getWeatherMapItem(rawWeatherItem: number | string): OpenWeatherMapItemInterface {
+  private getWeatherMapItem(rawWeatherItem: any): OpenWeatherMapItemInterface {
     return {
       dateTime: rawWeatherItem['dt_txt'],
       weatherMain: rawWeatherItem['weather'][0]['main'],
